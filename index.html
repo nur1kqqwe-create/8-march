@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 Наурызға шақыру</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        overflow: hidden; /* Чтобы не было прокрутки из-за цветов */
+        position: relative;
+    }
+    
+    h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        z-index: 2; /* Текст выше лепестков */
+    }
+
+    button {
+        padding: 15px 40px;
+        font-size: 20px;
+        border: none;
+        border-radius: 30px;
+        background-color: white;
+        color: #ff4b7d;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 2;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        background-color: #fff0f3;
+    }
+
+    /* Стили для анимации цветов */
+    .flower {
+        position: absolute;
+        top: -50px;
+        font-size: 24px;
+        user-select: none;
+        pointer-events: none;
+        animation: fall linear infinite;
+        z-index: 1;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(360deg);
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>🌸 8 Наурыз мерекесіне шақырамыз 🌸</h1>
+
+<button onclick="showMessage()">Қонақ болу</button>
+
+<script>
+function showMessage() {
+    alert("💖 Күтеміз, шақырамыз!\n\n📅 6 наурыз\n⏰ 18:30\n📍 Айтбай Назарбеков көшесі 65-ші үй\n\nКеліңіздер!");
+}
+
+// Функция создания падающих цветов
+function createFlower() {
+    const flowers = ['🌸', '🌺', '🌷', '✨', '🌼'];
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+    
+    flower.style.left = Math.random() * 100 + 'vw';
+    flower.style.animationDuration = Math.random() * 3 + 2 + 's'; // Скорость от 2 до 5 сек
+    flower.style.opacity = Math.random();
+    
+    document.body.appendChild(flower);
+
+    // Удаляем цветок после падения, чтобы не грузить память
+    setTimeout(() => {
+        flower.remove();
+    }, 5000);
+}
+
+// Запускаем создание цветов каждые 300мс
+setInterval(createFlower, 300);
+</script>
+
+</body>
+</html>
