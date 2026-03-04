@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 Наурызға шақыру</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+        padding: 20px;
+    }
+    
+    .container {
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .quote {
+        font-style: italic;
+        font-size: 18px;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+
+    .from {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 25px;
+        display: block;
+    }
+
+    button {
+        padding: 15px 40px;
+        font-size: 20px;
+        border: none;
+        border-radius: 30px;
+        background-color: white;
+        color: #ff4b7d;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        font-weight: bold;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        background-color: #fff0f3;
+    }
+
+    .author {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        font-size: 12px;
+        opacity: 0.8;
+        z-index: 3;
+    }
+
+    /* Анимация элементтері */
+    .flower {
+        position: absolute;
+        top: -50px;
+        user-select: none;
+        pointer-events: none;
+        animation: fall linear infinite;
+        z-index: 1;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(360deg);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🌸 8 Наурыз мерекесіне шақырамыз 🌸</h1>
+    
+    <p class="quote">«Әлемді сұлулық құтқарады, ал сол сұлулықтың бастауы — Сіздер!»</p>
+    
+    <span class="from">💌 9 "Ә" сынып оқушыларынан арналады</span>
+
+    <button onclick="showMessage()">Қонақ болу</button>
+</div>
+
+<div class="author">Автор: Nurik##</div>
+
+<script>
+function showMessage() {
+    alert("💖 Күтеміз, шақырамыз!\n\n📅 6 наурыз\n⏰ 18:30\n📍 Айтбай Назарбеков көшесі, 65-ші үй\n\nКеліңіздер! ✨");
+}
+
+function createFlower() {
+    const flowers = ['🌸', '🌺', '🌷', '🌼', '✨', '💖'];
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+    
+    flower.style.left = Math.random() * 100 + 'vw';
+    flower.style.fontSize = Math.random() * (30 - 15) + 15 + 'px'; // Әртүрлі өлшем
+    flower.style.animationDuration = Math.random() * 2 + 2 + 's'; // Жылдамырақ анимация
+    flower.style.opacity = Math.random() * 0.7 + 0.3;
+    
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+        flower.remove();
+    }, 4000);
+}
+
+// Анимацияны көбейту үшін жиілікті арттырдық (әр 150мс)
+setInterval(createFlower, 150);
+</script>
+
+</body>
+</html>
