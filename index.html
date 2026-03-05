@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8 Наурызға шақыру</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:white;
+margin:0;
+padding:0;
+overflow:hidden;
+}
+
+h1{
+margin-top:80px;
+font-size:40px;
+}
+
+p{
+font-size:20px;
+}
+
+button{
+padding:15px 30px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#message{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+.quote{
+margin-top:40px;
+font-style:italic;
+}
+
+#timer{
+margin-top:20px;
+font-size:22px;
+}
+
+/* Жүректер */
+.heart{
+position:absolute;
+color:white;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌸 8 Наурыз мерекесіне шақыру 🌸</h1>
+
+<p>
+Құрметті арулар!  
+Сіздерді көктемнің ең әдемі мерекесіне шақырамыз 💐
+</p>
+
+<p>
+📍 Айтбай Назарбеков көшесі 65  
+🕡 6 наурыз сағат 18:30
+</p>
+
+<div id="timer"></div>
+
+<br>
+
+<button onclick="invite()">Қонақ болу</button>
+
+<div id="message"></div>
+
+<div class="quote">
+"Әйел – әлемнің нәзік жүрегі." 💖
+</div>
+
+<div class="quote">
+"Әйел бақытты болса – әлем бақытты." ✨
+</div>
+
+<script>
+
+function invite(){
+document.getElementById("message").innerHTML="🎉 Сіз қонақ болдыңыз! Күтеміз!";
+}
+
+/* Таймер */
+
+var countDate = new Date("Mar 6, 2026 18:30:00").getTime();
+
+setInterval(function(){
+
+var now = new Date().getTime();
+var gap = countDate - now;
+
+var d = Math.floor(gap / (1000*60*60*24));
+var h = Math.floor((gap % (1000*60*60*24))/(1000*60*60));
+var m = Math.floor((gap % (1000*60*60))/(1000*60));
+var s = Math.floor((gap % (1000*60))/1000);
+
+document.getElementById("timer").innerHTML =
+"Мерекеге дейін: " + d+" күн "+h+" сағ "+m+" мин "+s+" сек";
+
+},1000);
+
+/* Жүрек генерациясы */
+
+setInterval(function(){
+var heart = document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},500);
+
+</script>
+
+</body>
+  </html>
